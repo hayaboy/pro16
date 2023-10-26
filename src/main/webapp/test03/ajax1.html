@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<script>
+
+		function fn_process(){
+			$.ajax({
+				type:"get",   //통신 타입을 설정합니다(post 또는 get 방식으로 선택합니다).
+				url:"http://localhost:8090/pro16/ajaxTest1", //요청할 url을 설정합니다.
+				data : { toServer : "서버로 보내는 글"}, //서버에 요청할 때 보낼 매개변수를 설정합니다.
+				success : function (toClient, status) {  //success : 요청 및 응답에 성공했을 때 처리 구문을 설정합니다.
+
+					console.log("현재 상태 : " ,status);
+					console.log("toClient " ,toClient);
+					//서버 응답 데이터는 data 변수에 저장되며, HTTP 상태는 status에 저장됩니다. 
+					//이 예제에서는 서버 응답 데이터를 #div1 요소의 텍스트 내용으로 설정합니다.
+					
+					
+					alert(toClient);				
+					
+				}, 
+				error : function () {
+					//alert("통신에 실패");
+				},
+				complete : function () {
+					//console.log("성공 후 완료됨");
+				}
+			});
+		} 
+
+
+	
+		
+
+
+	</script>
+</head>
+
+<body>
+
+	<input  type="button" value="전송하기" onclick="fn_process()"/><br><br>
+	<div id="div1" >  </div>
+	
+</body>
+
+</html>
